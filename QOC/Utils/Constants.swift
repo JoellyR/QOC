@@ -23,7 +23,7 @@ class Constants: NSObject {
     
     struct LabelText {
         static let kRefreshLabel = "Pull to refresh."
-        static let kMainNavTitle = "QoC App Buddy"
+        static let kMainNavTitle = "Top 100 Apps"
     }
     
     struct Misc {

@@ -57,9 +57,13 @@ class AppDetailsViewController: UIViewController {
     }
     
     func openUrl(urlString: String){
-        if let url = URL.init(string: urlString.replacingOccurrences(of: "https", with: "itms-apps")) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
+        #if (arch(i386) || arch(x86_64)) && (os(iOS) || os(watchOS) || os(tvOS))
+            alert(message: "The simulator does not support Appstore links", title: "Error")
+        #else
+            if let url = URL(string: urlString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        #endif
     }
     /*
     // MARK: - Navigation

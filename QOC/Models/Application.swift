@@ -23,15 +23,15 @@ class Application {
     var appImageURL: URL!
     
     init(data: [String: Any]) {
-        self.title = Util.extractTitle(data: data)
-        self.releaseDate = Util.extractReleaseDate(data: data)
-        self.summary = Util.extractSummary(data: data)
-        self.price = Util.extractPrice(data: data)
-        self.currency = Util.extractCurrency(data: data)
-        self.category = Util.extractCategory(data: data)
-        self.linkToAppStore = Util.extractAppStoreLink(data: data)
-        self.publisherName = Util.extractPublisherName(data: data)
-        self.publisherLink = Util.extractPublisherLink(data: data)
-        self.appImageURL = Util.extractImageURL(data: data, size: Constants.Misc.kAppImageSize)
+        self.title = DataParsingUtil.extractTitle(data: data)
+        self.releaseDate = DataParsingUtil.extractReleaseDate(data: data)
+        self.summary = DataParsingUtil.extractSummary(data: data)
+        self.price = DataParsingUtil.extractPrice(data: data)
+        self.currency = DataParsingUtil.extractCurrency(data: data)
+        self.category = DataParsingUtil.extractCategory(data: data)
+        self.linkToAppStore = DataParsingUtil.extractAppStoreLink(data: data)
+        self.publisherName = DataParsingUtil.extractPublisherName(data: data)
+        self.publisherLink = DataParsingUtil.extractPublisherLink(data: data)
+        self.appImageURL = DataParsingUtil.extractImageURL(data: data, size: Constants.Misc.kAppImageSize)
     }
 }

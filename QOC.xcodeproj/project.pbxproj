@@ -19,6 +19,7 @@
 		C6FE558B21026E5A00354269 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE558A21026E5A00354269 /* DateUtil.swift */; };
 		C6FE558D2102861F00354269 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE558C2102861F00354269 /* Constants.swift */; };
 		C6FE558F2102914F00354269 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE558E2102914F00354269 /* Extensions.swift */; };
+		C6FE55912102A33B00354269 /* DataParsingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE55902102A33B00354269 /* DataParsingUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C6FE558A21026E5A00354269 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		C6FE558C2102861F00354269 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C6FE558E2102914F00354269 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C6FE55902102A33B00354269 /* DataParsingUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParsingUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				C6FE558A21026E5A00354269 /* DateUtil.swift */,
 				C6FE558C2102861F00354269 /* Constants.swift */,
 				C6FE558E2102914F00354269 /* Extensions.swift */,
+				C6FE55902102A33B00354269 /* DataParsingUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FE55912102A33B00354269 /* DataParsingUtil.swift in Sources */,
 				C6FE558921025D1B00354269 /* Application.swift in Sources */,
 				C6FE558721025D0F00354269 /* ApplicationList.swift in Sources */,
 				C6FE557D2101A4D300354269 /* AppTableViewController.swift in Sources */,

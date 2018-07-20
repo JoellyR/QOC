@@ -62,9 +62,9 @@ class AppTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.kAppItemCellIdentifier, for: indexPath) as! AppItemCell
         let data = appList!.apps[indexPath.row]
-        cell.appTitle.text = Util.extractTitle(data: data)
+        cell.appTitle.text = DataParsingUtil.extractTitle(data: data)
         cell.appImage.setRounded()
-        Util.loadImage(url: Util.extractImageURL(data: data, size: Constants.Misc.kIconImageSize), imageView: cell.appImage)
+        Util.loadImage(url: DataParsingUtil.extractImageURL(data: data, size: Constants.Misc.kIconImageSize), imageView: cell.appImage)
         return cell
     }
     

@@ -14,7 +14,7 @@ class DateUtil {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ" //Your date format
         let date = dateFormatter.date(from: dateString)
         
-        dateFormatter.dateFormat = "MM/DD/YYYY"
+        dateFormatter.dateFormat = "MM/dd/YYYY"
         return dateFormatter.string(from: date!)
     }
 }
