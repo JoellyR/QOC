@@ -115,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="2151.1999999999998" y="132.68365817091455"/>
         </scene>
-        <!--Table View Controller-->
+        <!--App Table View Controller-->
         <scene sceneID="D0Z-Ta-8Lt">
             <objects>
-                <tableViewController id="T6c-h3-F7g" sceneMemberID="viewController">
+                <tableViewController id="T6c-h3-F7g" customClass="AppTableViewController" customModule="QOC" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="esM-42-Jlx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
