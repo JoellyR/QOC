@@ -9,7 +9,9 @@
 import UIKit
 
 class AppTableViewController: UITableViewController {
-
+    
+    var appList: ApplicationList? = nil
+    var indicatorView: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "QoC App Buddy"
@@ -18,6 +20,17 @@ class AppTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        setUpIndicator()
+    
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.backgroundColor = UIColor.white
+        self.refreshControl!.tintColor = UIColor.gray
+        let attributedText = NSMutableAttributedString(string:"Pull to refresh.")
+        attributedText.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray, range: NSMakeRange(0, attributedText.length))
+        self.refreshControl!.attributedTitle = attributedText
+        self.refreshControl!.addTarget(self, action: #selector(getData), for: .valueChanged)
+        
         getData()
     }
 
@@ -30,15 +43,37 @@ class AppTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if let appList = self.appList {
+            return appList.apps.count
+        }else {
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        }
         return 0
     }
     
-    func getData(){
+    func setUpIndicator() {
+        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        tableView.backgroundView = activityIndicatorView
+        self.indicatorView = activityIndicatorView
+        activityIndicatorView.startAnimating()
+    }
+    
+    func loadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            if self.refreshControl!.isRefreshing {
+                self.refreshControl!.endRefreshing()
+            }
+        }
+        
+    }
+    
+    @objc func getData(){
         let config = URLSessionConfiguration.default // Session Configuration
         let session = URLSession(configuration: config) // Load configuration into Session
         let url = URL(string: Util.Constant.APP_LIST_URL)!
@@ -57,8 +92,9 @@ class AppTableViewController: UITableViewController {
                     if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
                     {
                         
-                        print(json)
-                        
+                        self.appList = ApplicationList(data: json)
+                        self.loadData()
+                        NSLog("test")
                     }
                     
                 } catch {
@@ -74,15 +110,15 @@ class AppTableViewController: UITableViewController {
         task.resume()
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AppItemCell", for: indexPath) as! AppItemCell
 
-        // Configure the cell...
+        cell.appTitle.text = Util.extractTitle(data: appList!.apps[indexPath.row])
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -129,4 +165,10 @@ class AppTableViewController: UITableViewController {
     }
     */
 
+}
+
+
+class AppItemCell: UITableViewCell{
+     @IBOutlet var appImage : UIImageView!
+     @IBOutlet var appTitle : UILabel!
 }

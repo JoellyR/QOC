@@ -124,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="93" id="W8B-qy-pKx">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AppItemCell" rowHeight="93" id="W8B-qy-pKx" customClass="AppItemCell" customModule="QOC" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W8B-qy-pKx" id="bgS-Pg-Oaa">
@@ -156,6 +156,10 @@
                                         <constraint firstItem="sna-k6-v9U" firstAttribute="leading" secondItem="bgS-Pg-Oaa" secondAttribute="leading" constant="16" id="vrI-Lf-IIt"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="appImage" destination="sna-k6-v9U" id="kd2-cQ-Esn"/>
+                                    <outlet property="appTitle" destination="DGv-bZ-hab" id="rcW-mT-Eic"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -165,7 +169,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="QnQ-De-FIV"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" id="hBD-Cl-JZw"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="AppDetailsController" id="hBD-Cl-JZw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WMN-XW-mqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
