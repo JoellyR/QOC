@@ -14,7 +14,7 @@ class AppTableViewController: UITableViewController {
     var indicatorView: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "QoC App Buddy"
+        title = Constants.LabelText.kMainNavTitle
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,7 +26,7 @@ class AppTableViewController: UITableViewController {
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.backgroundColor = UIColor.white
         self.refreshControl!.tintColor = UIColor.gray
-        let attributedText = NSMutableAttributedString(string:"Pull to refresh.")
+        let attributedText = NSMutableAttributedString(string: Constants.LabelText.kRefreshLabel)
         attributedText.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray, range: NSMakeRange(0, attributedText.length))
         self.refreshControl!.attributedTitle = attributedText
         self.refreshControl!.addTarget(self, action: #selector(getData), for: .valueChanged)
@@ -76,7 +76,7 @@ class AppTableViewController: UITableViewController {
     @objc func getData(){
         let config = URLSessionConfiguration.default // Session Configuration
         let session = URLSession(configuration: config) // Load configuration into Session
-        let url = URL(string: Util.Constant.APP_LIST_URL)!
+        let url = URL(string: Constants.URLs.kAppListURL)!
         
         let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) in
@@ -94,7 +94,6 @@ class AppTableViewController: UITableViewController {
                         
                         self.appList = ApplicationList(data: json)
                         self.loadData()
-                        NSLog("test")
                     }
                     
                 } catch {
@@ -112,7 +111,7 @@ class AppTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AppItemCell", for: indexPath) as! AppItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.kAppItemCellIdentifier, for: indexPath) as! AppItemCell
 
         cell.appTitle.text = Util.extractTitle(data: appList!.apps[indexPath.row])
 

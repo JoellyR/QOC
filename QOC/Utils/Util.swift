@@ -9,9 +9,6 @@
 import UIKit
 
 open class Util {
-    struct Constant {
-        static let APP_LIST_URL = "http://phobos.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/toppaidapplications/limit=100/json"
-    }
     
     class func extractTitle(data: [String:Any]) -> String {
     

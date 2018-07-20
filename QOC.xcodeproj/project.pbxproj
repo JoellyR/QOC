@@ -17,6 +17,7 @@
 		C6FE558721025D0F00354269 /* ApplicationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE558621025D0F00354269 /* ApplicationList.swift */; };
 		C6FE558921025D1B00354269 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE558821025D1B00354269 /* Application.swift */; };
 		C6FE558B21026E5A00354269 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE558A21026E5A00354269 /* DateUtil.swift */; };
+		C6FE558D2102861F00354269 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE558C2102861F00354269 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C6FE558621025D0F00354269 /* ApplicationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationList.swift; sourceTree = "<group>"; };
 		C6FE558821025D1B00354269 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		C6FE558A21026E5A00354269 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		C6FE558C2102861F00354269 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				C6FE558321024EC800354269 /* Util.swift */,
 				C6FE558A21026E5A00354269 /* DateUtil.swift */,
+				C6FE558C2102861F00354269 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				C6FE557F2101A4F100354269 /* AppDetailsViewController.swift in Sources */,
 				C6FE558421024EC800354269 /* Util.swift in Sources */,
 				C6FE558B21026E5A00354269 /* DateUtil.swift in Sources */,
+				C6FE558D2102861F00354269 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
