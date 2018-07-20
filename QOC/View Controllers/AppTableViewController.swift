@@ -21,6 +21,9 @@ class AppTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        
         setUpIndicator()
     
         self.refreshControl = UIRefreshControl()
@@ -54,6 +57,30 @@ class AppTableViewController: UITableViewController {
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         }
         return 0
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.kAppItemCellIdentifier, for: indexPath) as! AppItemCell
+        let data = appList!.apps[indexPath.row]
+        cell.appTitle.text = Util.extractTitle(data: data)
+        cell.appImage.setRounded()
+        Util.loadImage(url: Util.extractImageURL(data: data, size: Constants.Misc.kIconImageSize), imageView: cell.appImage)
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Constants.SegueIdentifiers.kAppDetailsViewController, sender: self)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.SegueIdentifiers.kAppDetailsViewController {
+            if let indexPath = tableView.indexPathForSelectedRow, let appList = self.appList {
+                let destinationViewController = segue.destination as! AppDetailsViewController
+                destinationViewController.app = Application(data: appList.apps[indexPath.row])
+            }
+        }
     }
     
     func setUpIndicator() {
@@ -108,17 +135,7 @@ class AppTableViewController: UITableViewController {
         })
         task.resume()
     }
-
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.kAppItemCellIdentifier, for: indexPath) as! AppItemCell
-
-        cell.appTitle.text = Util.extractTitle(data: appList!.apps[indexPath.row])
-
-        return cell
-    }
-
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -171,3 +188,4 @@ class AppItemCell: UITableViewCell{
      @IBOutlet var appImage : UIImageView!
      @IBOutlet var appTitle : UILabel!
 }
+

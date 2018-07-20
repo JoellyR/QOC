@@ -89,4 +89,27 @@ open class Util {
         
     }
     
+    class func extractImageURL(data: [String:Any], size: String) -> URL! {
+        let imageArray = data["im:image"] as! [[String: Any]]
+        var url : URL!
+        for image in imageArray {
+            let attributes = image["attributes"] as! [String:Any]
+            if attributes["height"] as! String == size {
+                url = URL(string: image["label"] as! String)!
+            }
+        }
+        return url
+    }
+    
+    class func loadImage(url: URL, imageView: UIImageView) {
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            DispatchQueue.main.async {
+                imageView.image = UIImage(data: data!)
+            }
+        }
+        
+    }
+    
 }

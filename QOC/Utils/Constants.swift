@@ -26,6 +26,12 @@ class Constants: NSObject {
         static let kMainNavTitle = "QoC App Buddy"
     }
     
+    struct Misc {
+        static let kIconImageSize = "53"
+        static let kAppImageSize = "100"
+        static let kImageRadius: CGFloat = 10
+    }
+    
     
     
 }

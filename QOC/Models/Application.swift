@@ -20,17 +20,18 @@ class Application {
     var linkToAppStore: String!
     var publisherName: String!
     var publisherLink: String!
-    var appImage: UIImage!
+    var appImageURL: URL!
     
     init(data: [String: Any]) {
         self.title = Util.extractTitle(data: data)
         self.releaseDate = Util.extractReleaseDate(data: data)
-        self.summary = Util.extractReleaseDate(data: data)
+        self.summary = Util.extractSummary(data: data)
         self.price = Util.extractPrice(data: data)
         self.currency = Util.extractCurrency(data: data)
         self.category = Util.extractCategory(data: data)
         self.linkToAppStore = Util.extractAppStoreLink(data: data)
         self.publisherName = Util.extractPublisherName(data: data)
         self.publisherLink = Util.extractPublisherLink(data: data)
+        self.appImageURL = Util.extractImageURL(data: data, size: Constants.Misc.kAppImageSize)
     }
 }
