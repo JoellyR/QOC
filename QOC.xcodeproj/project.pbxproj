@@ -20,6 +20,7 @@
 		C6FE558D2102861F00354269 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE558C2102861F00354269 /* Constants.swift */; };
 		C6FE558F2102914F00354269 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE558E2102914F00354269 /* Extensions.swift */; };
 		C6FE55912102A33B00354269 /* DataParsingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE55902102A33B00354269 /* DataParsingUtil.swift */; };
+		C6FE55932103C6D400354269 /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FE55922103C6D400354269 /* NetworkUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		C6FE558C2102861F00354269 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C6FE558E2102914F00354269 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C6FE55902102A33B00354269 /* DataParsingUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParsingUtil.swift; sourceTree = "<group>"; };
+		C6FE55922103C6D400354269 /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				C6FE558C2102861F00354269 /* Constants.swift */,
 				C6FE558E2102914F00354269 /* Extensions.swift */,
 				C6FE55902102A33B00354269 /* DataParsingUtil.swift */,
+				C6FE55922103C6D400354269 /* NetworkUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				C6FE558421024EC800354269 /* Util.swift in Sources */,
 				C6FE558B21026E5A00354269 /* DateUtil.swift in Sources */,
 				C6FE558F2102914F00354269 /* Extensions.swift in Sources */,
+				C6FE55932103C6D400354269 /* NetworkUtil.swift in Sources */,
 				C6FE558D2102861F00354269 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

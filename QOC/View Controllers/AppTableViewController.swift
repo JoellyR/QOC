@@ -12,6 +12,7 @@ class AppTableViewController: UITableViewController {
     
     var appList: ApplicationList? = nil
     var indicatorView: UIActivityIndicatorView!
+    let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     override func viewDidLoad() {
         super.viewDidLoad()
         title = Constants.LabelText.kMainNavTitle
@@ -61,10 +62,11 @@ class AppTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.kAppItemCellIdentifier, for: indexPath) as! AppItemCell
-        let data = appList!.apps[indexPath.row]
-        cell.appTitle.text = DataParsingUtil.extractTitle(data: data)
-        cell.appImage.setRounded()
-        Util.loadImage(url: DataParsingUtil.extractImageURL(data: data, size: Constants.Misc.kIconImageSize), imageView: cell.appImage)
+        if let data = appList?.apps[indexPath.row] {
+            cell.appTitle.text = DataParsingUtil.extractTitle(data: data)
+            cell.appImage.setRounded()
+            Util.loadImage(url: DataParsingUtil.extractImageURL(data: data, size: Constants.Misc.kIconImageSize), imageView: cell.appImage)
+        }
         return cell
     }
     
@@ -84,32 +86,44 @@ class AppTableViewController: UITableViewController {
     }
     
     func setUpIndicator() {
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
         tableView.backgroundView = activityIndicatorView
         self.indicatorView = activityIndicatorView
         activityIndicatorView.startAnimating()
     }
     
-    func loadData() {
+    func stopIndicator() {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            if self.activityIndicatorView.isAnimating {
+                self.activityIndicatorView.stopAnimating()
+            }
+        }
+    }
+    
+    func stopRefreshing() {
+        DispatchQueue.main.async {
             if self.refreshControl!.isRefreshing {
                 self.refreshControl!.endRefreshing()
             }
+        }
+    }
+    
+    func loadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.stopRefreshing()
+            self.stopIndicator()
         }
         
     }
     
     @objc func getData(){
-        let config = URLSessionConfiguration.default // Session Configuration
-        let session = URLSession(configuration: config) // Load configuration into Session
-        let url = URL(string: Constants.URLs.kAppListURL)!
-        
-        let task = session.dataTask(with: url, completionHandler: {
-            (data, response, error) in
-            
+        NetworkUtil.getData(responseHandler: { (data : Data?, response : URLResponse?, error : Error?) -> Void in
             if error != nil {
                 
+                self.alert(message: "Error fetching data.", title: "Error", completion: {() -> Void in
+                    self.stopIndicator()
+                    self.stopRefreshing()
+                })
                 print(error!.localizedDescription)
                 
             } else {
@@ -124,16 +138,19 @@ class AppTableViewController: UITableViewController {
                     }
                     
                 } catch {
-                    
+                    self.alert(message: "Error fetching data.", title: "Error", completion: {() -> Void in
+                        self.stopIndicator()
+                        self.stopRefreshing()
+                    })
                     print("error in JSONSerialization")
                     
                 }
                 
                 
             }
-            
+
         })
-        task.resume()
+
     }
     
     /*

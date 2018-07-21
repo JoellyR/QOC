@@ -9,12 +9,18 @@
 import UIKit
 
 class DateUtil {
-    class func formatDate(dateString: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ" //Your date format
-        let date = dateFormatter.date(from: dateString)
+    class func formatDate(dateString: String?) -> String {
         
-        dateFormatter.dateFormat = "MM/dd/YYYY"
-        return dateFormatter.string(from: date!)
+        if let string = dateString {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ" //Your date format
+            let date = dateFormatter.date(from: string)
+            
+            dateFormatter.dateFormat = "MM/dd/YYYY"
+            return dateFormatter.string(from: date!)
+        }
+        
+        return ""
+        
     }
 }
