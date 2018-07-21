@@ -33,9 +33,8 @@ class AppDetailsViewController: UIViewController {
         titleLabel.text = app.title
         priceLabel.text = "\(app.currency!) \(app.price!)"
         categoryLabel.text = app.category
-        dateLabel.text = app.releaseDate
+        dateLabel.text = DateUtil.formatDate(dateString: app.releaseDate)
         summaryTextView.text = app.summary
-        //storeLinkLabel.text = app.linkToAppStore
         publisherButton.setTitle(app.publisherName, for: .normal)
     }
 
