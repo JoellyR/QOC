@@ -43,7 +43,10 @@ class AppDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //Setting TextView offset point to zero because the textview sometimes starts in the middle of the text on iPhones.
+    override func viewDidLayoutSubviews() {
+        summaryTextView.setContentOffset(CGPoint.zero, animated: false)
+    }
     /// Action setup to handle button clicks for routing to the Game or Author in the Appstore.
     ///
     /// - Parameter sender: The button which activated the action.
