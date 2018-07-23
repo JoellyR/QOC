@@ -8,8 +8,17 @@
 
 import UIKit
 
+/// Util to externalize the parsing of data so that it can be easily accesible from any class.
 class DataParsingUtil {
-
+    
+    
+    /// Util to extract nested data (1 layer down) with the ability to provide custom values for the fields to drop
+    /// through.
+    /// - Parameters:
+    ///   - from: The main key to parse.
+    ///   - subField: The nested field to get the actual data from.
+    ///   - data: The orginial full data.
+    /// - Returns: The value which was extracted.
     class func extractData(from: String, subField:String, data: [String:Any]) -> String{
         if let obj = data[from] as? [String:Any] {
             return obj[subField] as? String ?? ""
@@ -17,6 +26,13 @@ class DataParsingUtil {
         return ""
     }
     
+    
+    /// Util to extract nested data (1 layer down) with the sub field always being "label"
+    ///
+    /// - Parameters:
+    ///   - from: The main key to parse.
+    ///   - data:  The orginial full data.
+    /// - Returns: The value which was extracted.
     class func extractLabel(from: String, data: [String:Any]) -> String{
         if let obj = data[from] as? [String:Any] {
             return obj["label"] as? String ?? ""
@@ -24,6 +40,13 @@ class DataParsingUtil {
         return ""
     }
     
+    /// Util to extract a specified attribute from a given field.
+    ///
+    /// - Parameters:
+    ///   - from: The main key to parse.
+    ///   - attribute: The key of the attribute value that is to be extracted.
+    ///   - data: The orginial full data.
+    /// - Returns: The value which was extracted.
     class func extractAttribute(from: String, attribute: String, data: [String:Any]) -> String {
         
         if let obj = data[from] as? [String: Any] {
@@ -35,6 +58,9 @@ class DataParsingUtil {
         return ""
         
     }
+    
+    
+    /// Below are methods used to extract specific data using the parsing Utils defined above.
     
     class func extractTitle(data: [String:Any]) -> String {
         

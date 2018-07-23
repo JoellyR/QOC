@@ -85,12 +85,14 @@ class AppTableViewController: UITableViewController {
         }
     }
     
+    /// Setting up an activity indicator to be displayed while the data is being loaded.
     func setUpIndicator() {
         tableView.backgroundView = activityIndicatorView
         self.indicatorView = activityIndicatorView
         activityIndicatorView.startAnimating()
     }
     
+    /// Stopping the activity indicator once the table has been loaded.
     func stopIndicator() {
         DispatchQueue.main.async {
             if self.activityIndicatorView.isAnimating {
@@ -99,6 +101,7 @@ class AppTableViewController: UITableViewController {
         }
     }
     
+    /// Stopping The refresh control and its animation.
     func stopRefreshing() {
         DispatchQueue.main.async {
             if self.refreshControl!.isRefreshing {
@@ -107,6 +110,7 @@ class AppTableViewController: UITableViewController {
         }
     }
     
+    //Loading the data into the tableview controller and stopping the activity indicator and refresh control.
     func loadData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -116,6 +120,8 @@ class AppTableViewController: UITableViewController {
         
     }
     
+    
+    /// Getting the list of top 100 apps from the appstore through an API call. Reloading the table data, and presentng any required error messages.
     @objc func getData(){
         NetworkUtil.getData(responseHandler: { (data : Data?, response : URLResponse?, error : Error?) -> Void in
             if error != nil {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Simple model holding a list of applications.
 class ApplicationList {
     
     var apps: [[String:Any]] = []

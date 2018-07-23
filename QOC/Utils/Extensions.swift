@@ -7,6 +7,9 @@
 //
 import UIKit
 
+//File used to keep all extensions in one place.
+
+//Imageview extension used to set a border radius to the imageview.
 extension UIImageView {
     
     func setRounded() {
@@ -17,6 +20,7 @@ extension UIImageView {
     
 }
 
+//Extension used to provide a function to easily display an alert on any ViewController.
 extension UIViewController {
     
     func alert(message: String, title: String) {

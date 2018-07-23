@@ -43,6 +43,10 @@ class AppDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    /// Action setup to handle button clicks for routing to the Game or Author in the Appstore.
+    ///
+    /// - Parameter sender: The button which activated the action.
     @IBAction func linkOnClick(_ sender: UIButton) {
         switch sender {
             case appStoreButton:
@@ -55,6 +59,10 @@ class AppDetailsViewController: UIViewController {
         
     }
     
+    
+    /// Used to open the url provided. Has checks to determine if the target platform is an emulator and display an error message if needed.
+    ///
+    /// - Parameter urlString: <#urlString description#>
     func openUrl(urlString: String){
         #if (arch(i386) || arch(x86_64)) && (os(iOS) || os(watchOS) || os(tvOS))
             alert(message: "The simulator does not support Appstore links", title: "Error")

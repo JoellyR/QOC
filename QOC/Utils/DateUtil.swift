@@ -8,7 +8,14 @@
 
 import UIKit
 
+/// Date Util class.
 class DateUtil {
+    
+    
+    /// Used to fromat date into the MM/DD/YYYY format
+    ///
+    /// - Parameter dateString: original date string.
+    /// - Returns: formated date string.
     class func formatDate(dateString: String?) -> String {
         
         if let string = dateString {

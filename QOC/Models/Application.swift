@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+/// Simple model for a single app.
 class Application {
     
     var title: String!
