@@ -21,10 +21,13 @@ class DateUtil {
         if let string = dateString {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ" //Your date format
-            let date = dateFormatter.date(from: string)
+            let originalDate = dateFormatter.date(from: string)
             
-            dateFormatter.dateFormat = "MM/dd/YYYY"
-            return dateFormatter.string(from: date!)
+            if let date = originalDate {
+                dateFormatter.dateFormat = "MM/dd/YYYY"
+                return dateFormatter.string(from: date)
+            }
+            
         }
         
         return ""
